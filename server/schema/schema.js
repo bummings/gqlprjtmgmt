@@ -1,5 +1,3 @@
-const { projects, clients } = require("../sampleData");
-
 // Mongoose models
 const Project = require('../models/Project');
 const Client = require('../models/Client');
@@ -34,7 +32,7 @@ const ProjectType = new GraphQLObjectType({
     client: {
       type: ClientType,
       resolve(parent, args) {
-        return clients.find(client => client.id === parent.clientId)
+        return Client.findById(parent.id)
       }
     }
   }),
