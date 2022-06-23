@@ -1,11 +1,16 @@
 const express = require("express");
+const colors = require("colors");
 require("dotenv").config();
+const connectDB = require("./config/db");
 
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema/schema");
 
 const port = process.env.PORT || 8000;
 const app = express();
+
+// connect to database
+connectDB();
 
 app.use(
   "/graphql",
@@ -16,4 +21,3 @@ app.use(
 );
 
 app.listen(port, console.log(`Server runnin on port ${port}`));
-console.log(process.env.MONGO_URI)
