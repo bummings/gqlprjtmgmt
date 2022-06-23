@@ -16,3 +16,4 @@ app.use(
 );
 
 app.listen(port, console.log(`Server runnin on port ${port}`));
+console.log(process.env.MONGO_URI)
