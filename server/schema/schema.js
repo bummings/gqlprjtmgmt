@@ -1,6 +1,6 @@
 // Mongoose models
-const Project = require('../models/Project');
-const Client = require('../models/Client');
+const Project = require("../models/Project");
+const Client = require("../models/Client");
 
 const {
   GraphQLObjectType,
@@ -9,7 +9,7 @@ const {
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull,
-  GraphQLEnumType
+  GraphQLEnumType,
 } = require("graphql");
 
 // Client type
@@ -34,9 +34,9 @@ const ProjectType = new GraphQLObjectType({
     client: {
       type: ClientType,
       resolve(parent, args) {
-        return clients.findById(parent.id)
-      }
-    }
+        return Client.findById(parent.clientId);
+      },
+    },
   }),
 });
 
@@ -53,7 +53,7 @@ const RootQuery = new GraphQLObjectType({
       type: ProjectType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        return Project.findById(args.id)
+        return Project.findById(args.id);
       },
     },
     clients: {
@@ -76,70 +76,69 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    
     // add client
     addClient: {
       type: ClientType,
       args: {
         name: { type: GraphQLNonNull(GraphQLString) },
         email: { type: GraphQLNonNull(GraphQLString) },
-        phone: { type: GraphQLNonNull(GraphQLString) }
+        phone: { type: GraphQLNonNull(GraphQLString) },
       },
       resolve(parent, args) {
         const client = new Client({
           name: args.name,
           email: args.email,
-          phone: args.phone
+          phone: args.phone,
         });
         return client.save();
-      }
+      },
     },
-    
+
     // delete client
     deleteClient: {
       type: ClientType,
       args: {
-        id: { type: GraphQLNonNull(GraphQLID) }
+        id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        return Client.findByIdAndRemove(args.id)
-      }
+        return Client.findByIdAndRemove(args.id);
+      },
     },
 
     // add project
     addProject: {
       type: ProjectType,
       args: {
-          name: { type: GraphQLNonNull(GraphQLString) },
-          description: { type: GraphQLNonNull(GraphQLString) },
-          status: { 
-            type: new GraphQLEnumType({
-              name: 'ProjectStatus',
-              values: {
-                'new': { value: 'Not started' },
-                'progress': { value: 'In progress' },
-                'complete': { value: 'Completed' },
-              }
-            }),
-            defaultValue: 'Not started',
-          },
-          clientId: { type: GraphQLNonNull(GraphQLID) }
+        name: { type: GraphQLNonNull(GraphQLString) },
+        description: { type: GraphQLNonNull(GraphQLString) },
+        status: {
+          type: new GraphQLEnumType({
+            name: "ProjectStatus",
+            values: {
+              new: { value: "Not started" },
+              progress: { value: "In progress" },
+              complete: { value: "Completed" },
+            },
+          }),
+          defaultValue: "Not started",
+        },
+        clientId: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
         const project = new Project({
           name: args.name,
           description: args.description,
           status: args.status,
-          clientId: args.clientId
+          clientId: args.clientId,
         });
-        return project.save()
-      }       
-    }
-  }
-})
+        return project.save();
+      },
+    },
+  },
+});
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
   // the mutation is just identified as "mutation" here because otherwise it would be mutation: "mutation"
-  mutation
+  mutation,
 });
