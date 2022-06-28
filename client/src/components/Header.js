@@ -1,4 +1,4 @@
-import flamingo from './assets/flamingo.jpg'
+
 
 
 export default function Header() {
