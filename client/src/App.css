@@ -4,7 +4,16 @@
 }
 
 .container {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
+
+.flamingoContainer {
+  width: 100vw;
   background-color: #B6C3B8;
+  padding: 0;
+  margin: 0;
   color: #E5D7BE;
   display: flex;
   border: 10px solid salmon;
