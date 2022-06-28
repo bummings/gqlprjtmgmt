@@ -1,6 +1,31 @@
 .App {
+  font-size: 15rem;
+  height: 600px;
+}
+
+.container {
+  background-color: #B6C3B8;
+  color: #E5D7BE;
   display: flex;
+  border: 10px solid salmon;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  height: 100vh;
+}
+
+.flamingo {
+  height: 100px;
+  width: 100px;
+}
+
+.bruh {
+  font-size: 15rem;
+  margin: .5rem;
+  /* weird outline hack */
+  text-shadow:
+		-1px -1px 0 #493848,
+		1px -1px 0 #493848,
+		-1px 1px 0 #493848,
+		1px 1px 0 #493848;
 }
