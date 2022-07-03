@@ -11,10 +11,10 @@
 
 .flamingoContainer {
   width: 100vw;
-  background-color: #B6C3B8;
+  background-color: #b6c3b8;
   padding: 0;
   margin: 0;
-  color: #E5D7BE;
+  color: #e5d7be;
   display: flex;
   border: 10px solid salmon;
   flex-direction: column;
@@ -30,11 +30,8 @@
 
 .bruh {
   font-size: 15rem;
-  margin: .5rem;
+  margin: 0.5rem;
   /* weird outline hack */
-  text-shadow:
-		-1px -1px 0 #493848,
-		1px -1px 0 #493848,
-		-1px 1px 0 #493848,
-		1px 1px 0 #493848;
+  text-shadow: -1px -1px 0 #493848, 1px -1px 0 #493848, -1px 1px 0 #493848,
+    1px 1px 0 #493848;
 }
