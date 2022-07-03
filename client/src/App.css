@@ -1,8 +1,3 @@
-.App {
-  font-size: 15rem;
-  height: 600px;
-}
-
 .container {
   padding: 0;
   margin: 0;
@@ -20,12 +15,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .flamingo {
   height: 100px;
   width: 100px;
+  margin-top: 4rem;
 }
 
 .bruh {
