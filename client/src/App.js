@@ -13,18 +13,20 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <>
+    <div className="app">
       <ApolloProvider client={client}>
         <div className="container">
           <Header />
           <div className="flamingoContainer">
             <img src={flamingo} alt="a flamingo appears" className="flamingo" />
-            <h1 className="bruh">bruh</h1>
+            <h1 classNa me="bruh">
+              bruh
+            </h1>
             <Clients />
           </div>
         </div>
       </ApolloProvider>
-    </>
+    </div>
   );
 }
 
