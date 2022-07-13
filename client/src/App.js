@@ -4,6 +4,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Clients from "./components/Clients";
 import flamingo from "./components/assets/flamingo.jpg";
 import Header from "./components/Header";
+import AddClientModal from "./components/AddClientModal";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -34,6 +35,7 @@ function App() {
     <div className="app">
       <ApolloProvider client={client}>
         <div className="container">
+          <AddClientModal />
           <Header />
           <div className="flamingoContainer">
             <img src={flamingo} alt="a flamingo appears" className="flamingo" />
