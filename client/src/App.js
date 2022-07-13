@@ -2,13 +2,31 @@ import React from "react";
 import "./App.css";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Clients from "./components/Clients";
-
 import flamingo from "./components/assets/flamingo.jpg";
 import Header from "./components/Header";
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        clients: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+          clients: {
+            merge(existing, incoming) {
+              return incoming;
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
 const client = new ApolloClient({
   uri: "http://localhost:8000/graphql",
-  cache: new InMemoryCache(),
+  cache,
 });
 
 function App() {
@@ -19,9 +37,7 @@ function App() {
           <Header />
           <div className="flamingoContainer">
             <img src={flamingo} alt="a flamingo appears" className="flamingo" />
-            <h1 classNa me="bruh">
-              bruh
-            </h1>
+            <h1 className="bruh">bruh</h1>
             <Clients />
           </div>
         </div>
