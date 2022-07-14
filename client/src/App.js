@@ -35,11 +35,17 @@ function App() {
     <div className="app">
       <ApolloProvider client={client}>
         <div className="container">
-          <AddClientModal />
           <Header />
           <div className="flamingoContainer">
-            <img src={flamingo} alt="a flamingo appears" className="flamingo" />
-            <h1 className="bruh">bruh</h1>
+            <div className="flamingoBox">
+              <img
+                src={flamingo}
+                alt="a flamingo appears"
+                className="flamingo"
+              />
+              <h1 className="bruh">bruh</h1>
+            </div>
+            <AddClientModal />
             <Clients />
           </div>
         </div>
